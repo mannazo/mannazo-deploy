@@ -1,30 +1,30 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: mannazo-ingress
-  namespace: mannazo
+  name: mannazu-ingress
+  namespace: mannazu
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-    - host: www.mannazo.com
+    - host: www.mannazu.com
       http:
         paths:
         - path: /
           pathType: Prefix
           backend:
             service:
-              name: mannazo-nginx
+              name: mannazu-nginx
               port:
                 number: 80
-    - host: api.mannazo.com
+    - host: api.mannazu.com
       http:
         paths:
         - path: /
           pathType: Prefix
           backend:
             service:
-              name: mannazo-tomcat
+              name: mannazu-tomcat
               port:
                 number: 8080

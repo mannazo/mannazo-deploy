@@ -1,36 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mannazo-tomcat
-  namespace: mannazo
+  name: mannazu-tomcat
+  namespace: mannazu
 spec:
   replicas: 3
   revisionHistoryLimit: 1  # 보관할 ReplicaSet의 수를 3로 제한
   selector:
     matchLabels:
-      app: mannazo-tomcat
+      app: mannazu-tomcat
   template:
     metadata:
       labels:
-        app: mannazo-tomcat
+        app: mannazu-tomcat
     spec:
       containers:
-      - name: mannazo-tomcat
+      - name: mannazu-tomcat
         image: harbor.dorong9.com/mannazo/back-springtomcat:1
         ports:
         - containerPort: 8080
       imagePullSecrets:
-      - name: mannazo-regcred
+      - name: mannazu-regcred
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mannazo-tomcat
-  namespace: mannazo
+  name: mannazu-tomcat
+  namespace: mannazu
 spec:
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
   selector:
-    app: mannazo-tomcat
+    app: mannazu-tomcat

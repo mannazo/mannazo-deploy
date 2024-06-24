@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mannazo-nginx
-  namespace: mannazo
+  name: mannazu-nginx
+  namespace: mannazu
 spec:
   replicas: 3
   revisionHistoryLimit: 1  # 보관할 ReplicaSet의 수를 3로 제한
   selector:
     matchLabels:
-      app: mannazo-nginx
+      app: mannazu-nginx
   template:
     metadata:
       labels:
-        app: mannazo-nginx
+        app: mannazu-nginx
     spec:
       containers:
       - name: mannazo-nginx
@@ -20,17 +20,17 @@ spec:
         ports:
         - containerPort: 80
       imagePullSecrets:
-      - name: mannazo-regcred
+      - name: mannazu-regcred
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mannazo-nginx
-  namespace: mannazo
+  name: mannazu-nginx
+  namespace: mannazu
 spec:
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
   selector:
-    app: mannazo-nginx
+    app: mannazu-nginx
