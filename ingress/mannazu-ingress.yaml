@@ -18,7 +18,7 @@ spec:
               name: mannazu-nginx
               port:
                 number: 80
-    - host: mannazu.com
+    - host: *.mannazu.com
       http:
         paths:
         - path: /
