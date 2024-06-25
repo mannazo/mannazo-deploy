@@ -34,3 +34,4 @@ spec:
       targetPort: 8080
   selector:
     app: mannazu-tomcat
+  type: LoadBalancer
