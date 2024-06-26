@@ -18,6 +18,16 @@ spec:
               name: mannazu-nginx
               port:
                 number: 80
+    - host: mannazu.com
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: mannazu-nginx
+              port:
+                number: 80                
     - host: api.mannazu.com
       http:
         paths:
