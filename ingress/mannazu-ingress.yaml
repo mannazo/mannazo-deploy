@@ -22,8 +22,8 @@ spec:
     - host: mannazu.com
       http:
         paths:
-        - path: /
-          pathType: Prefix
+        - path: /(.*)
+          pathType: ImplementationSpecific
           backend:
             service:
               name: mannazu-nginx
