@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mannazo-nginx
-        image: harbor.dorong9.com/mannazo/front-react:41
+        image: harbor.dorong9.com/mannazo/front-react:45
         ports:
         - containerPort: 80
       imagePullSecrets:
