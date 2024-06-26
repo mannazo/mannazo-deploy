@@ -5,7 +5,6 @@ metadata:
   namespace: mannazu
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    #nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: nginx
   rules:
@@ -28,7 +27,7 @@ spec:
             service:
               name: mannazu-nginx
               port:
-                number: 80                
+                number: 80
     - host: api.mannazu.com
       http:
         paths:
