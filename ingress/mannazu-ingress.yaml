@@ -22,7 +22,7 @@ spec:
     - host: mannazu.com
       http:
         paths:
-        - path: /(.*)
+        - path: /
           pathType: Prefix
           backend:
             service:
