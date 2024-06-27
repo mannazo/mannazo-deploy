@@ -4,7 +4,7 @@ metadata:
   name: mannazu-nginx
   namespace: mannazu
 spec:
-  replicas: 3
+  replicas: 1
   revisionHistoryLimit: 1  # 보관할 ReplicaSet의 수를 3로 제한
   selector:
     matchLabels:
