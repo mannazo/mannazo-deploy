@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mannazu-tomcat
-        image: harbor.dorong9.com/mannazo/back-springtomcat:39
+        image: harbor.dorong9.com/mannazo/back-springtomcat:40
         ports:
         - containerPort: 8080
         resources:
