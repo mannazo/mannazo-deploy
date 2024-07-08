@@ -43,7 +43,7 @@ spec:
       volumes:
         - name: mysql-data
           persistentVolumeClaim:
-            claimName: mysql-pvc
+            claimName: mannazu-mysql-pvc
         - name: init-script
           configMap:
             name: db-init-script
