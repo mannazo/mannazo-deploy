@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mannazu-mysql
+  namespace: mannazu
+spec:
+  serviceName: mannazu-mysql-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mannazu-mysql
+  template:
+    metadata:
+      labels:
+        app: mannazu-mysql
+    spec:
+      containers:
+        - name: mannazu-mysql
+          image: mysql:latest
+          volumeMounts:
+            - name: mannazu-mysql-data
+              mountPath: /var/lib/mysql
+          env:
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secrets
+                  key: mysql-username
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secrets
+                  key: mysql-password
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+            - name: init-script
+              mountPath: /docker-entrypoint-initdb.d/init.sql
+              subPath: init.sql
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: mysql-pvc
+        - name: init-script
+          configMap:
+            name: db-init-script
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mannazu-mysql-service
+  namespace: mannazu
+spec:
+  selector:
+    app: mannazu-mysql
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
