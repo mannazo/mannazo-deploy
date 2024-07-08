@@ -10,4 +10,4 @@ spec:
     - ReadWriteOnce
   nfs:
     path: /mannazu-mysql-data
-    server: {{NFS_SERVER_IP}}   # NFS 서버의 IP 주소
+    server: ${{ secrets.NFS_SERVER_IP }}   # NFS 서버의 IP 주소
