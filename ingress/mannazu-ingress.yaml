@@ -18,13 +18,13 @@ spec:
               name: mannazu-nginx
               port:
                 number: 80
-    - host: api.mannazu.com
-      http:
-        paths:
-        - path: /user-service(/|$)(.*)
-          pathType: ImplementationSpecific
-          backend:
-            service:
-              name: user-service
-              port:
-                number: 8080
+    # - host: api.mannazu.com
+    #   http:
+    #     paths:
+    #     - path: /user-service(/|$)(.*)
+    #       pathType: ImplementationSpecific
+    #       backend:
+    #         service:
+    #           name: user-service
+    #           port:
+    #             number: 8080
