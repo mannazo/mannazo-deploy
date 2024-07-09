@@ -21,11 +21,11 @@ spec:
             - name: mannazu-mysql-data
               mountPath: /var/lib/mysql
           env:
-            - name: MYSQL_USER
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secrets
-                  key: mysql-username
+            # - name: MYSQL_USER
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: mysql-secrets
+            #       key: mysql-username
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -60,3 +60,4 @@ spec:
     - protocol: TCP
       port: 3306
       targetPort: 3306
+  type: LoadBalancer
