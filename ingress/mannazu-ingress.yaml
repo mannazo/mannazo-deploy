@@ -21,10 +21,10 @@ spec:
     - host: api.mannazu.com
       http:
         paths:
-        - path: /
+        - path: /user-service
           pathType: Prefix
           backend:
             service:
-              name: mannazu-tomcat
+              name: user-service
               port:
                 number: 8080
