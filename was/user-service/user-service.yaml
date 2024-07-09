@@ -28,6 +28,16 @@ spec:
         envFrom:
           - configMapRef:
               name: user-service-config  # ConfigMap의 이름        
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config
+        env:
+        - name: SPRING_CONFIG_LOCATION
+          value: file:/app/config/application.properties
+      volumes:
+      - name: config-volume
+        configMap:
+          name: user-service-config
       imagePullSecrets:
       - name: mannazu-regcred
 ---
