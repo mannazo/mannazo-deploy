@@ -21,8 +21,8 @@ spec:
     - host: api.mannazu.com
       http:
         paths:
-        - path: /user-service
-          pathType: Prefix
+        - path: /user-service(/|$)(.*)
+          pathType: ImplementationSpecific
           backend:
             service:
               name: user-service
