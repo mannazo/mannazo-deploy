@@ -4,7 +4,7 @@ metadata:
   name: mannazu-api-ingress
   namespace: mannazu
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
