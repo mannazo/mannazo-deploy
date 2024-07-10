@@ -18,12 +18,14 @@ spec:
         image: swaggerapi/swagger-ui
         ports:
         - containerPort: 8080
-        env:
-          - name: URLS
-            value: >
-              [
-              {url:'http://api.mannazu.com/user-service/v3/api-docs', name:'User Service'},
-              ]        
+        volumeMounts:
+          - name: swagger-config-volume
+            mountPath: /usr/share/nginx/html/index.html
+            subPath: index.html
+      volumes:
+        - name: swagger-config-volume
+          configMap:
+            name: swagger-config
         resources:
           requests:
             cpu: 125m
