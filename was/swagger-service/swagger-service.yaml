@@ -15,9 +15,15 @@ spec:
     spec:
       containers:
       - name: swagger-service
-        image: harbor.dorong9.com/mannazo/swagger-service:97
+        image: swaggerapi/swagger-ui
         ports:
         - containerPort: 8080
+        env:
+          - name: URLS
+            value: >
+              [
+              {url:'http://api.mannazu.com/user-service/v3/api-docs', name:'User Service'},
+              ]        
         resources:
           requests:
             cpu: 125m
@@ -25,8 +31,6 @@ spec:
           limits:
             cpu: 500m
             memory: 1000Mi  
-      imagePullSecrets:
-      - name: mannazu-regcred
 ---
 apiVersion: v1
 kind: Service
