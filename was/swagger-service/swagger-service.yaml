@@ -22,9 +22,6 @@ spec:
           - name: swagger-config-volume
             mountPath: /usr/share/nginx/html/index.html
             subPath: index.html
-          - name: swagger-initializer-volume
-            mountPath: /usr/share/nginx/html/swagger-initializer.js
-            subPath: swagger-initializer.js
         resources:
           requests:
             cpu: 125m
@@ -34,9 +31,6 @@ spec:
             memory: 1000Mi  
       volumes:
         - name: swagger-config-volume
-          configMap:
-            name: swagger-config
-        - name: swagger-initializer-volume
           configMap:
             name: swagger-config
 ---
