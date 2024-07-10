@@ -22,6 +22,9 @@ spec:
           - name: swagger-config-volume
             mountPath: /usr/share/nginx/html/index.html
             subPath: index.html
+          - name: swagger-config-volume
+            mountPath: /usr/share/nginx/html/swagger-config.json
+            subPath: swagger-config.json
         resources:
           requests:
             cpu: 125m
