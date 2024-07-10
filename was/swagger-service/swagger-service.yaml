@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: swagger-service
-        image: harbor.dorong9.com/mannazo/swagger-service:8
+        image: harbor.dorong9.com/mannazo/swagger-service:9
         ports:
         - containerPort: 8080
         resources:
