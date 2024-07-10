@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: admin-service
-        image: harbor.dorong9.com/mannazo/admin-service:48
+        image: harbor.dorong9.com/mannazo/admin-service:99
         ports:
         - containerPort: 8080
         resources:
