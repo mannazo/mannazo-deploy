@@ -20,7 +20,7 @@ spec:
         - containerPort: 8080
         volumeMounts:
           - name: swagger-config-volume
-            mountPath: /usr/share/nginx/html
+            mountPath: /usr/share/nginx/html/index.html
             subPath: index.html
           - name: swagger-initializer-volume
             mountPath: /usr/share/nginx/html/swagger-initializer.js
@@ -36,15 +36,9 @@ spec:
         - name: swagger-config-volume
           configMap:
             name: swagger-config
-            items:
-              - key: index.html
-                path: index.html
         - name: swagger-initializer-volume
           configMap:
             name: swagger-config
-            items:
-              - key: swagger-initializer.js
-                path: swagger-initializer.js
 ---
 apiVersion: v1
 kind: Service
