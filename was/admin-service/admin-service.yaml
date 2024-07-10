@@ -25,9 +25,6 @@ spec:
           limits:
             cpu: 500m
             memory: 1000Mi  
-        envFrom:
-          - configMapRef:
-              name: admin-service-config  # ConfigMap의 이름        
         volumeMounts:
         - name: config-volume
           mountPath: /app/config
