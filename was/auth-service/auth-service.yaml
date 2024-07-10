@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: auth-service
-        image: harbor.dorong9.com/mannazo/auth-service:3
+        image: harbor.dorong9.com/mannazo/auth-service:4
         ports:
         - containerPort: 8080
         resources:
