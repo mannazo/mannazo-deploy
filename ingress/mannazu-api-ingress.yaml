@@ -36,14 +36,14 @@ spec:
           pathType: ImplementationSpecific
           backend:
             service:
-              name: admin-service
+              name: post-service
               port:
                 number: 8080  
         - path: /shop-service(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
             service:
-              name: admin-service
+              name: shop-service
               port:
                 number: 8080       
         - path: /user-service(/|$)(.*)
