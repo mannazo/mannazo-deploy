@@ -17,7 +17,7 @@ spec:
       - name: swagger-service
         image: swaggerapi/swagger-ui
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         env:
           - name: URLS
             value: >
@@ -40,7 +40,7 @@ metadata:
 spec:
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 80
+      targetPort: 80
   selector:
     app: swagger-service

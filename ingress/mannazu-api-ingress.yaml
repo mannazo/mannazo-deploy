@@ -17,7 +17,7 @@ spec:
             service:
               name: swagger-service
               port:
-                number: 8080
+                number: 80
         - path: /user-service(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
