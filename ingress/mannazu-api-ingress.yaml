@@ -11,13 +11,20 @@ spec:
     - host: api.mannazu.com
       http:
         paths:
+        - path: /
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: swagger-service
+              port:
+                number: 8080
         - path: /user-service(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
             service:
               name: user-service
               port:
-                number: 8080
+                number: 8080                
 
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
