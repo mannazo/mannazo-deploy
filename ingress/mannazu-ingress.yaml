@@ -4,7 +4,7 @@ metadata:
   name: mannazu-ingress
   namespace: mannazu
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
   rules:
@@ -18,6 +18,23 @@ spec:
               name: mannazu-nginx
               port:
                 number: 80
+    - host: api.mannazu.com
+      http:
+        paths:
+        - path: /
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: swagger-service
+              port:
+                number: 80
+        - path: /user-service(/|$)(.*)
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: user-service
+              port:
+                number: 8080                      
     # - host: api.mannazu.com
     #   http:
     #     paths:
