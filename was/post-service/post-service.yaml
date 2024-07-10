@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-service
+  namespace: mannazu
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: post-service
+  template:
+    metadata:
+      labels:
+        app: post-service
+    spec:
+      containers:
+      - name: post-service
+        image: harbor.dorong9.com/mannazo/post-service:100
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 125m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 1000Mi  
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config
+        env:
+        - name: SPRING_CONFIG_LOCATION
+          value: file:/app/config/application.properties
+      volumes:
+      - name: config-volume
+        configMap:
+          name: post-service-config
+      imagePullSecrets:
+      - name: mannazu-regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: post-service
+  namespace: mannazu
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: post-service
