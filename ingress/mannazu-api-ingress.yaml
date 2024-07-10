@@ -1,30 +1,30 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: mannazu-api-ingress
-#   namespace: mannazu
-#   annotations:
-#     nginx.ingress.kubernetes.io/rewrite-target: /$2
-# spec:
-#   ingressClassName: nginx
-#   rules:
-#     - host: api.mannazu.com
-#       http:
-#         paths:
-#         - path: /
-#           pathType: ImplementationSpecific
-#           backend:
-#             service:
-#               name: swagger-service
-#               port:
-#                 number: 80
-#         - path: /user-service(/|$)(.*)
-#           pathType: ImplementationSpecific
-#           backend:
-#             service:
-#               name: user-service
-#               port:
-#                 number: 8080                
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mannazu-api-ingress
+  namespace: mannazu
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: api.mannazu.com
+      http:
+        paths:
+        - path: /
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: swagger-service
+              port:
+                number: 80
+        - path: /user-service(/|$)(.*)
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: user-service
+              port:
+                number: 8080                
 # 
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
