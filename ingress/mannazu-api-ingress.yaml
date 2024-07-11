@@ -39,6 +39,13 @@ spec:
               name: chat-service
               port:
                 number: 8080  
+        - path: /community-service(/|$)(.*)
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: community-service
+              port:
+                number: 8080                  
         - path: /post-service(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
