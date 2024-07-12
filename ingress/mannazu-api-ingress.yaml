@@ -5,6 +5,11 @@ metadata:
   namespace: mannazu
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "Access-Control-Allow-Origin: https://api.mannazu.com";
+      more_set_headers "Access-Control-Allow-Methods: GET, OPTIONS";
+      more_set_headers "Access-Control-Allow-Headers: *";
+      more_set_headers "Access-Control-Allow-Credentials: true";    
 spec:
   ingressClassName: nginx
   rules:
