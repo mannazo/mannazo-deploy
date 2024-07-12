@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: chat-service
-        image: harbor.dorong9.com/mannazo/chat-service:51
+        image: harbor.dorong9.com/mannazo/chat-service:52
         ports:
         - containerPort: 8080
         resources:
