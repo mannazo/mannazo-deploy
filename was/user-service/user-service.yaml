@@ -43,7 +43,7 @@ spec:
       stableService: user-service-stable    
       steps:
       - setWeight: 50
-      - pause: {duration: 1m}
+      - pause: {duration: 20m}
       maxSurge: "50%"
       maxUnavailable: 0      
 ---
