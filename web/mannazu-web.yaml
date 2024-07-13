@@ -1,37 +1,46 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
-  name: mannazu-nginx
+  name: mannazu-nextjs
   namespace: mannazu
 spec:
   revisionHistoryLimit: 1  # 보관할 ReplicaSet의 수를 3로 제한
   selector:
     matchLabels:
-      app: mannazu-nginx
+      app: mannazu-nextjs
   template:
     metadata:
       labels:
-        app: mannazu-nginx
+        app: mannazu-nextjs
     spec:
       containers:
-      - name: mannazo-nginx
+      - name: mannazu-nextjs
         image: harbor.dorong9.com/mannazo/front-react:117
         ports:
         - containerPort: 80
         resources:
           requests:
-            cpu: "50m"
-            memory: "64Mi"
+            cpu: "0"
+            memory: "0"
           limits:
             cpu: "250m"
             memory: "250Mi"   
       imagePullSecrets:
       - name: mannazu-regcred
+  strategy:
+    canary:
+      canaryService: mannazu-nextjs-canary
+      stableService: mannazu-nextjs-stable    
+      steps:
+      - setWeight: 50
+      - pause: {duration: 20m}
+      maxSurge: "50%"
+      maxUnavailable: 0           
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mannazu-nginx
+  name: mannazu-nextjs-stable
   namespace: mannazu
 spec:
   ports:
@@ -39,4 +48,17 @@ spec:
       port: 80
       targetPort: 80
   selector:
-    app: mannazu-nginx
+    app: mannazu-nextjs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mannazu-nextjs-canary
+  namespace: mannazu
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    app: mannazu-nextjs    

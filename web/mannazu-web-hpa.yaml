@@ -1,12 +1,12 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: mannazu-nginx-hpa
+  name: mannazu-nextjs-hpa
   namespace: mannazu
 spec:
   scaleTargetRef: 
-    apiVersion: apps/v1
-    kind: Deployment
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
     name: mannazu-nginx
   minReplicas: 1
   maxReplicas: 5
