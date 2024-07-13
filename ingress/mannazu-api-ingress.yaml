@@ -18,49 +18,49 @@ spec:
               name: swagger-service
               port:
                 number: 80              
-        - path: /admin-service(/|$)(.*)
+        - path: /admin(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
             service:
               name: admin-service
               port:
                 number: 8080    
-        - path: /auth-service(/|$)(.*)
+        - path: /auth(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
             service:
               name: auth-service
               port:
                 number: 8080                    
-        - path: /chat-service(/|$)(.*)
+        - path: /chat(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
             service:
               name: chat-service
               port:
                 number: 8080  
-        - path: /community-service(/|$)(.*)
+        - path: /community(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
             service:
               name: community-service
               port:
                 number: 8080                  
-        - path: /post-service(/|$)(.*)
+        - path: /post(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
             service:
               name: post-service
               port:
                 number: 8080  
-        - path: /shop-service(/|$)(.*)
+        - path: /shop(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
             service:
               name: shop-service
               port:
                 number: 8080       
-        - path: /user-service(/|$)(.*)
+        - path: /user(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
             service:
