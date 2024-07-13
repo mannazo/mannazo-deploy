@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: shop-service
   namespace: mannazu
@@ -37,11 +37,33 @@ spec:
           name: shop-service-config
       imagePullSecrets:
       - name: mannazu-regcred
+  strategy:
+    canary:
+      canaryService: shop-service-canary
+      stableService: shop-service-stable    
+      steps:
+      - setWeight: 50
+      - pause: {duration: 1m}
+      maxSurge: "50%"
+      maxUnavailable: 0            
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: shop-service
+  name: shop-service-stable
+  namespace: mannazu
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: shop-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shop-service-canary
   namespace: mannazu
 spec:
   ports:
