@@ -27,8 +27,8 @@ spec:
             subPath: swagger-config.json
         resources:
           requests:
-            cpu: 125m
-            memory: 256Mi
+            cpu: 0
+            memory: 0
           limits:
             cpu: 500m
             memory: 1000Mi  
