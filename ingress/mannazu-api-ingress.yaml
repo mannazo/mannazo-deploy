@@ -69,7 +69,7 @@ spec:
               port:
                 number: 8080            
     # test 배포용 (canary) 
-    - host: canary.api.mannazu.com
+    - host: canaryapi.mannazu.com
       http:
         paths:              
         - path: /admin(/|$)(.*)
