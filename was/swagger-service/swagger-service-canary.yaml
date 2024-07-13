@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: swagger-service-canary-canary
+  name: swagger-service-canary
   namespace: mannazu
 spec:
   revisionHistoryLimit: 1
