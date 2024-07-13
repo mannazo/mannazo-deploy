@@ -17,9 +17,6 @@ spec:
       containers:
         - name: mannazu-mysql
           image: mysql:latest
-          volumeMounts:
-            - name: mannazu-mysql-data
-              mountPath: /var/lib/mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
