@@ -30,9 +30,7 @@ spec:
           mountPath: /app/config
         env:
         - name: SPRING_CONFIG_LOCATION
-          value: file:/app/config/application.properties
-        - name: SPRINGDOC_SWAGGER_UI_BASE_URL
-          value: /user-service          
+          value: file:/app/config/application.properties    
       volumes:
       - name: config-volume
         configMap:
