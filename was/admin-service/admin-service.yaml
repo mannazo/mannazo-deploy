@@ -4,7 +4,6 @@ metadata:
   name: admin-service
   namespace: mannazu
 spec:
-  revisionHistoryLimit: 1  # 보관할 ReplicaSet의 수를 3로 제한
   selector:
     matchLabels:
       app: admin-service
