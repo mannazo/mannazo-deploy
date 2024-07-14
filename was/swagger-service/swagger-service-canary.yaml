@@ -4,7 +4,6 @@ metadata:
   name: swagger-service-canary
   namespace: mannazu
 spec:
-  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: swagger-service-canary
@@ -31,7 +30,7 @@ spec:
             memory: 0
           limits:
             cpu: 500m
-            memory: 1000Mi  
+            memory: 100Mi  
       volumes:
         - name: swagger-config-volume-canary
           configMap:
