@@ -4,6 +4,7 @@ metadata:
   name: admin-service
   namespace: mannazu
 spec:
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: admin-service

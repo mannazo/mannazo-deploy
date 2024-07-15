@@ -4,6 +4,7 @@ metadata:
   name: user-service
   namespace: mannazu
 spec:
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: user-service

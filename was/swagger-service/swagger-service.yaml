@@ -4,6 +4,7 @@ metadata:
   name: swagger-service
   namespace: mannazu
 spec:
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: swagger-service

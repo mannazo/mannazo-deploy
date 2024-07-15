@@ -4,6 +4,7 @@ metadata:
   name: mannazu-nextjs
   namespace: mannazu
 spec:
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: mannazu-nextjs

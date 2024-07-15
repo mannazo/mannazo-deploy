@@ -4,6 +4,7 @@ metadata:
   name: shop-service
   namespace: mannazu
 spec:
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: shop-service

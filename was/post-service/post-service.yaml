@@ -4,6 +4,7 @@ metadata:
   name: post-service
   namespace: mannazu
 spec:
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: post-service

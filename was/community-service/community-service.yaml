@@ -4,6 +4,7 @@ metadata:
   name: community-service
   namespace: mannazu
 spec:
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: community-service

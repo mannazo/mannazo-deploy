@@ -4,6 +4,7 @@ metadata:
   name: chat-service
   namespace: mannazu
 spec:
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: chat-service
