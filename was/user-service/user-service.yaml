@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: harbor.dorong9.com/mannazo/user-service:193
+        image: harbor.dorong9.com/mannazo/user-service:194
         ports:
         - containerPort: 8080
         resources:
