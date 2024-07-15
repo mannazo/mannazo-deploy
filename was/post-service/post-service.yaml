@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: post-service
-        image: harbor.dorong9.com/mannazo/post-service:57
+        image: harbor.dorong9.com/mannazo/post-service:61
         ports:
         - containerPort: 8080
         resources:
