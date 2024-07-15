@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: community-service
-        image: harbor.dorong9.com/mannazo/community-service:44
+        image: harbor.dorong9.com/mannazo/community-service:53
         ports:
         - containerPort: 8080
         resources:
