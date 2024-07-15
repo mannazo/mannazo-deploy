@@ -23,7 +23,7 @@ spec:
             memory: 0Mi
           limits:
             cpu: 500m
-            memory: 500Mi  
+            memory: 800Mi  
         volumeMounts:
         - name: config-volume
           mountPath: /app/config
