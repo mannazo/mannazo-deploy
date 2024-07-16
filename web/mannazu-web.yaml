@@ -61,4 +61,4 @@ spec:
       port: 80
       targetPort: 3000
   selector:
-    app: mannazu-nextjs    
+    app: mannazu-nextjs   
