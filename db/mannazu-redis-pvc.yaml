@@ -9,3 +9,4 @@ spec:
   resources:
     requests:
       storage: 1Gi   # PV와 동일한 용량을 요청
+  volumeName: mannazu-redis-pv  

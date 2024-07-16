@@ -9,3 +9,4 @@ spec:
   resources:
     requests:
       storage: 5Gi   # PV와 동일한 용량을 요청
+  volumeName: mannazu-mysql-pv  
