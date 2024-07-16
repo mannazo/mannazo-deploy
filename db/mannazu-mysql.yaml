@@ -36,9 +36,9 @@ spec:
             - name: init-script
               mountPath: /docker-entrypoint-initdb.d/init.sql
               subPath: init.sql
-            - name: mysql-config
-              mountPath: /etc/mysql/conf.d/custom.cnf
-              subPath: custom.cnf            
+            # - name: mysql-config
+            #   mountPath: /etc/mysql/conf.d/custom.cnf
+            #   subPath: custom.cnf            
           resources:
             requests:
               memory: "128Mi"  
@@ -53,12 +53,12 @@ spec:
         - name: init-script
           configMap:
             name: db-init-script
-        - name: mysql-config
-          configMap:
-            name: mysql-custom-config
-            items:
-            - key: custom.cnf
-              path: custom.cnf            
+        # - name: mysql-config
+        #   configMap:
+        #     name: mysql-custom-config
+        #     items:
+        #     - key: custom.cnf
+        #       path: custom.cnf            
 ---
 apiVersion: v1
 kind: Service
