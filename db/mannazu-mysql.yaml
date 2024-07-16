@@ -32,13 +32,16 @@ spec:
             - name: init-script
               mountPath: /docker-entrypoint-initdb.d/init.sql
               subPath: init.sql
+            - name: mysql-config
+              mountPath: /etc/mysql/conf.d/custom.cnf
+              subPath: custom.cnf            
           resources:
             requests:
-              memory: "0"  
-              cpu: "0"      
+              memory: "128Mi"  
+              cpu: "250m"      
             limits:
-              memory: "1500Mi"    
-              cpu: "1000m"             
+              memory: "500Mi"    
+              cpu: "512m"             
       volumes:
         - name: mysql-data
           persistentVolumeClaim:
@@ -46,6 +49,12 @@ spec:
         - name: init-script
           configMap:
             name: db-init-script
+        - name: mysql-config
+          configMap:
+            name: mysql-custom-config
+            items:
+            - key: custom.cnf
+              path: custom.cnf            
 ---
 apiVersion: v1
 kind: Service
