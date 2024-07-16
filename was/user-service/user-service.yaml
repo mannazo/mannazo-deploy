@@ -16,9 +16,6 @@ spec:
       containers:
       - name: user-service
         image: harbor.dorong9.com/mannazo/user-service:203
-        args:
-          - "--spring.cloud.config.enabled=false"
-          - "--eureka.client.enabled=false"        
         ports:
         - containerPort: 8080
         resources:
