@@ -15,10 +15,7 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: harbor.dorong9.com/mannazo/user-service:206
-        env:
-        - name: AUTH_SERVICE_URL
-          value: "http://auth-service-stable.mannazu.svc.cluster.local:8080"        
+        image: harbor.dorong9.com/mannazo/user-service:206        
         ports:
         - containerPort: 8080
         resources:
@@ -33,7 +30,9 @@ spec:
           mountPath: /app/config
         env:
         - name: SPRING_CONFIG_LOCATION
-          value: file:/app/config/application.properties         
+          value: file:/app/config/application.properties    
+        - name: AUTH_SERVICE_URL
+          value: "http://auth-service-stable.mannazu.svc.cluster.local:8080"               
       volumes:
       - name: config-volume
         configMap:
