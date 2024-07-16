@@ -8,4 +8,4 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi   # PV와 동일한 용량을 요청
+      storage: 1Gi   # PV와 동일한 용량을 요청
