@@ -16,13 +16,17 @@ spec:
     spec:
       containers:
         - name: mannazu-mysql
-          image: mysql:latest
+          image: yobasystems/alpine-mariadb:10.5.9
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mysql-secrets
                   key: mysql-password
+            - name: MARIADB_CHARACTER_SET_SERVER
+              value: "utf8mb4"
+            - name: MARIADB_COLLATION_SERVER
+              value: "utf8mb4_unicode_ci"                  
           ports:
             - containerPort: 3306
               name: mysql
