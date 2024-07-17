@@ -30,9 +30,7 @@ spec:
           mountPath: /app/config
         env:
         - name: SPRING_CONFIG_LOCATION
-          value: file:/app/config/application.properties    
-        - name: AUTH_SERVICE_URL
-          value: "http://auth-service-stable:8080"               
+          value: file:/app/config/application.properties           
       volumes:
       - name: config-volume
         configMap:
