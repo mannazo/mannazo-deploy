@@ -41,7 +41,7 @@ spec:
             #   subPath: custom.cnf            
           resources:
             requests:
-              memory: "128Mi"  
+              memory: "64Mi"  
               cpu: "250m"      
             limits:
               memory: "500Mi"    

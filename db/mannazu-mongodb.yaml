@@ -38,6 +38,13 @@ spec:
               mountPath: /data/db
             - name: init-scripts
               mountPath: /docker-entrypoint-initdb.d
+          resources:
+            requests:
+              memory: "64Mi"  
+              cpu: "250m"      
+            limits:
+              memory: "500Mi"    
+              cpu: "512m"                   
       volumes:
         - name: mongodb-data
           persistentVolumeClaim:
