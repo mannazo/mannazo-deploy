@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mannazu-mongdb
+  name: mannazu-mongodb
   namespace: mannazu
 spec:
-  serviceName: mannazu-mongdb-service
+  serviceName: mannazu-mongodb-service
   replicas: 1
   selector:
     matchLabels:
-      app: mannazu-mongdb
+      app: mannazu-mongodb
   template:
     metadata:
       labels:
-        app: mannazu-mongdb
+        app: mannazu-mongodb
     spec:
       initContainers:
         - name: init-mongodb
@@ -35,24 +35,24 @@ spec:
               mountPath: /docker-entrypoint-initdb.d
               readOnly: true
       containers:
-        - name: mannazu-mongdb
+        - name: mannazu-mongodb
           image: mongo:4.2.24-bionic
           env:
             - name: MONGO_INITDB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mongdb-secrets
-                  key: mongdb-password
+                  name: mongodb-secrets
+                  key: mongodb-password
           ports:
             - containerPort: 27017
-              name: mongdb
+              name: mongodb
           volumeMounts:
-            - name: mongdb-data
+            - name: mongodb-data
               mountPath: /data/db
       volumes:
         - name: mongodb-data
           persistentVolumeClaim:
-            claimName: mannazu-mongdb-pvc
+            claimName: mannazu-mongodb-pvc
         - name: init-scripts
           configMap:
             name: mongodb-init-script
@@ -60,11 +60,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mannazu-mongdb-service
+  name: mannazu-mongodb-service
   namespace: mannazu
 spec:
   selector:
-    app: mannazu-mongdb
+    app: mannazu-mongodb
   ports:
     - protocol: TCP
       port: 27017
