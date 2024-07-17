@@ -1,55 +1,72 @@
-# apiVersion: apps/v1
-# kind: StatefulSet
-# metadata:
-#   name: mannazu-mongdb
-#   namespace: mannazu
-# spec:
-#   serviceName: mannazu-mongdb-service
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: mannazu-mongdb
-#   template:
-#     metadata:
-#       labels:
-#         app: mannazu-mongdb
-#     spec:
-#       containers:
-#         - name: mannazu-mongdb
-#           image: mongo:latest
-#           env:
-#             - name: MONGO_INITDB_ROOT_PASSWORD
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: mongdb-secrets
-#                   key: mongdb-password
-#           ports:
-#             - containerPort: 27017
-#               name: mongdb
-#           volumeMounts:
-#             - name: mongdb-data
-#               mountPath: /data/db
-#             # - name: init-script
-#             #   mountPath: /docker-entrypoint-initdb.d/init.sql
-#             #   subPath: init.sql
-#       volumes:
-#         - name: mongdb-data
-#           persistentVolumeClaim:
-#             claimName: mannazu-mongdb-pvc
-#         # - name: init-script
-#         #   configMap:
-#         #     name: db-init-script
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: mannazu-mongdb-service
-#   namespace: mannazu
-# spec:
-#   selector:
-#     app: mannazu-mongdb
-#   ports:
-#     - protocol: TCP
-#       port: 27017
-#       targetPort: 27017
-#   type: LoadBalancer
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mannazu-mongdb
+  namespace: mannazu
+spec:
+  serviceName: mannazu-mongdb-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mannazu-mongdb
+  template:
+    metadata:
+      labels:
+        app: mannazu-mongdb
+    spec:
+      initContainers:
+        - name: init-mongodb
+          image: mongo:4.2.24-bionic
+          command:
+            - "bash"
+            - "-c"
+            - |
+              mongo --host localhost:27017 -u root -p "$MONGO_INITDB_ROOT_PASSWORD" --authenticationDatabase admin /docker-entrypoint-initdb.d/init-mongodb.js
+          env:
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secrets
+                  key: mongodb-password
+          volumeMounts:
+            - name: mongodb-data
+              mountPath: /data/db
+            - name: init-scripts
+              mountPath: /docker-entrypoint-initdb.d
+              readOnly: true
+      containers:
+        - name: mannazu-mongdb
+          image: mongo:4.2.24-bionic
+          env:
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongdb-secrets
+                  key: mongdb-password
+          ports:
+            - containerPort: 27017
+              name: mongdb
+          volumeMounts:
+            - name: mongdb-data
+              mountPath: /data/db
+      volumes:
+        - name: mongdb-data
+          persistentVolumeClaim:
+            claimName: mannazu-mongdb-pvc
+        - name: init-scripts
+          configMap:
+            name: mongodb-init-script
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mannazu-mongdb-service
+  namespace: mannazu
+spec:
+  selector:
+    app: mannazu-mongdb
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+  type: LoadBalancer
