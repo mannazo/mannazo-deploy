@@ -50,7 +50,7 @@ spec:
             - name: mongdb-data
               mountPath: /data/db
       volumes:
-        - name: mongdb-data
+        - name: mongodb-data
           persistentVolumeClaim:
             claimName: mannazu-mongdb-pvc
         - name: init-scripts
