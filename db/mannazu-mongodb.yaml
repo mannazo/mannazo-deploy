@@ -18,6 +18,11 @@ spec:
         - name: mannazu-mongodb
           image: mongo:4.2.24-bionic
           env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secrets
+                  key: mongodb-username          
             - name: MONGO_INITDB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
