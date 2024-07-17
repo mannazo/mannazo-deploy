@@ -40,6 +40,9 @@ spec:
             #   mountPath: /etc/mysql/conf.d/custom.cnf
             #   subPath: custom.cnf            
           resources:
+            requests:
+              memory: "0Mi"  
+              cpu: "0m"      
             limits:
               memory: "500Mi"    
               cpu: "512m"             

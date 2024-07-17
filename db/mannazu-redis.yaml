@@ -24,6 +24,9 @@ spec:
             - name: redis-data
               mountPath: /data
           resources:
+            requests:
+              memory: "0Mi"
+              cpu: "0m"
             limits:
               memory: "500Mi"
               cpu: "512m"
