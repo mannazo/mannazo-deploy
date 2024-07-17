@@ -21,6 +21,7 @@ spec:
             - "bash"
             - "-c"
             - |
+              sleep 30  # MongoDB가 시작될 때까지 대기
               mongo --host mannazu-mongodb-service:27017 -u root -p "$MONGO_INITDB_ROOT_PASSWORD" --authenticationDatabase admin /docker-entrypoint-initdb.d/init-mongodb.js
           env:
             - name: MONGO_INITDB_ROOT_PASSWORD
