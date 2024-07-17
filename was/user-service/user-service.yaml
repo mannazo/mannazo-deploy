@@ -32,7 +32,7 @@ spec:
         - name: SPRING_CONFIG_LOCATION
           value: file:/app/config/application.properties    
         - name: AUTH_SERVICE_URL
-          value: "http://auth-service-stable.mannazu.svc.cluster.local:8080"               
+          value: "http://auth-service-stable:8080"               
       volumes:
       - name: config-volume
         configMap:
