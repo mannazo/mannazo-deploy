@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: review-service
-        image: harbor.dorong9.com/mannazo/review-service:206        
+        image: harbor.dorong9.com/mannazo/review-service:2
         ports:
         - containerPort: 8080
         resources:
