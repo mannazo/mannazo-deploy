@@ -43,7 +43,7 @@ spec:
       stableService: admin-service-stable    
       steps:
       - setWeight: 50
-      - pause: {duration: 20m}
+      - pause: {duration: 5m}
       maxSurge: "50%"
       maxUnavailable: 0            
 ---
