@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: shop-service
-        image: harbor.dorong9.com/mannazo/shop-service:90
+        image: harbor.dorong9.com/mannazo/shop-service:91
         ports:
         - containerPort: 8080
         resources:
