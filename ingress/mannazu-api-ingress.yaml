@@ -54,6 +54,13 @@ spec:
               name: post-service-stable
               port:
                 number: 8080  
+        - path: /review(/|$)(.*)
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: review-service-stable
+              port:
+                number: 8080                  
         - path: /shop(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
@@ -114,6 +121,13 @@ spec:
               name: post-service-canary
               port:
                 number: 8080  
+        - path: /review(/|$)(.*)
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: review-service-stable
+              port:
+                number: 8080                   
         - path: /shop(/|$)(.*)
           pathType: ImplementationSpecific
           backend:
