@@ -33,7 +33,7 @@ spec:
       stableService: mannazu-nextjs-stable    
       steps:
       - setWeight: 50
-      - pause: {duration: 20m}
+      - pause: {duration: 10m}
       maxSurge: "50%"
       maxUnavailable: 0           
 ---

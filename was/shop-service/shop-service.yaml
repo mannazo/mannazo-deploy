@@ -43,7 +43,7 @@ spec:
       stableService: shop-service-stable    
       steps:
       - setWeight: 50
-      - pause: {duration: 5m}
+      - pause: {duration: 10m}
       maxSurge: "50%"
       maxUnavailable: 0            
 ---
