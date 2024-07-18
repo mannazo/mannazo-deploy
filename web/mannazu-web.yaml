@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mannazu-nextjs
-        image: harbor.dorong9.com/mannazo/mannazu-nextjs:142
+        image: harbor.dorong9.com/mannazo/mannazu-nextjs:143
         ports:
         - containerPort: 3000
         resources:
