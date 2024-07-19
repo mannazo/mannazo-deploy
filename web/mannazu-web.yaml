@@ -36,18 +36,18 @@ spec:
       maxSurge: "50%"
       maxUnavailable: 0           
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: mannazu-nextjs-stable
-  namespace: mannazu
-spec:
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 3000
-  selector:
-    app: mannazu-nextjs
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: mannazu-nextjs-stable
+#   namespace: mannazu
+# spec:
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 3000
+#   selector:
+#     app: mannazu-nextjs
 ---
 apiVersion: v1
 kind: Service
