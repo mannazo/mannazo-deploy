@@ -16,7 +16,7 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: mannazu-nextjs-stable
+              name: mannazu-nextjs
               port:
                 number: 80
     # canary 테스트 서비스
