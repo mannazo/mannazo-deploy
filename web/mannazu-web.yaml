@@ -52,7 +52,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mannazu-nextjs-canary
+  name: mannazu-nextjs
   namespace: mannazu
 spec:
   ports:
@@ -65,7 +65,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mannazu-nextjs
+  name: mannazu-nextjs-canary
   namespace: mannazu
 spec:
   ports:
