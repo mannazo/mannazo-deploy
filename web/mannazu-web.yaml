@@ -32,7 +32,7 @@ spec:
       canaryService: mannazu-nextjs-canary
       steps:
       - setWeight: 50
-      - pause: {duration: P4W}
+      - pause: {}
       maxSurge: "50%"
       maxUnavailable: 0           
 ---
