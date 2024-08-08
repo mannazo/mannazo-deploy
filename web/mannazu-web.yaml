@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mannazu-nextjs
-        image: harbor.dorong9.com/mannazo/mannazu-nextjs:153
+        image: harbor.dorong9.com/mannazo/mannazu-nextjs:152
         ports:
         - containerPort: 3000
         resources:
@@ -32,7 +32,7 @@ spec:
       canaryService: mannazu-nextjs-canary
       steps:
       - setWeight: 50
-      - pause: {duration: "manual"}
+      - pause: {duration: P4W}
       maxSurge: "50%"
       maxUnavailable: 0           
 ---
